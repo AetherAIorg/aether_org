@@ -1,0 +1,4 @@
+/* Override app shell for login route */
+body:has(.login-root) .app-shell {
+  display: none;
+}

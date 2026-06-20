@@ -1,0 +1,25 @@
+name: Trigger pages deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify deployments repo
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DEPLOYMENTS_DISPATCH_TOKEN }}
+          repository: ${{ vars.DEPLOYMENTS_REPO || 'AetherAIorg/deployments' }}
+          event-type: pages-updated
+          client-payload: |-
+            {
+              "ref": "${{ github.sha }}",
+              "repo": "${{ github.repository }}",
+              "branch": "${{ github.ref_name }}",
+              "actor": "${{ github.actor }}",
+              "pages_only": true
+            }

@@ -1,0 +1,23 @@
+services:
+  hub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    environment:
+      # Reach the MetricGraph API on the shared external network by service name.
+      METRICGRAPH_BASE_URL: http://api:8000
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/app
+      - hubstate:/app/state
+
+volumes:
+  hubstate:
+
+# To let the hub call MetricGraph's `api` service over Docker, run both
+# compose projects on a shared network, e.g.:
+#   docker network create aether
+# then add to BOTH compose files:
+#   networks: { default: { name: aether, external: true } }

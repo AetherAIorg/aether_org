@@ -1,0 +1,3 @@
+metricgraph_base_url: http://localhost:8000
+registry_base_url: http://localhost:3000
+webhook_secret: ""

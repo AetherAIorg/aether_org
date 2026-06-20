@@ -1,0 +1,31 @@
+name: Trigger production deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "metricgraph/**"
+      - "integration_hub/**"
+      - "ingest_engine/**"
+      - "registry_governance/**"
+      - "margin_github_pages/**"
+      - "margin_sdk/**"
+  workflow_dispatch:
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify deployments repo
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DEPLOYMENTS_DISPATCH_TOKEN }}
+          repository: ${{ vars.DEPLOYMENTS_REPO || 'AetherAIorg/deployments' }}
+          event-type: app-updated
+          client-payload: |-
+            {
+              "ref": "${{ github.sha }}",
+              "repo": "${{ github.repository }}",
+              "branch": "${{ github.ref_name }}",
+              "actor": "${{ github.actor }}"
+            }

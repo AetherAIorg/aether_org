@@ -1,0 +1,26 @@
+# Routing toggles for integration_hub.
+# Secrets, tokens, channel IDs, and webhook URLs live in .env (see .env.example).
+# This file only controls which connectors fire for which event classes, so
+# operators can tune noise without touching credentials.
+#
+# Copy to config.yaml and set HUB_CONFIG_FILE=config.yaml (default).
+routing:
+  slack_enabled: true
+  teams_enabled: true
+  linear_issues_enabled: true
+
+  # Mirror file.* (ingest) and info events to Teams. Off by default to keep
+  # Teams focused on alerts (conflicts / parse failures).
+  teams_file_events: false
+  teams_info_events: false
+
+  # Only create a Linear issue for conflicts at/above this severity (1-5).
+  linear_min_severity: 1
+
+# Workspace-scoped MetricGraph API keys for Linear context queries.
+margin:
+  base_url: http://localhost:8000
+  default_api_key: mg_live_...
+  team_keys:
+    "linear-team-id-ops": mg_live_ops_...
+    "linear-team-id-analytics": mg_live_analytics_...

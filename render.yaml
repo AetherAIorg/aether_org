@@ -1,0 +1,8 @@
+# Production deploys are managed by the deployments repo.
+#
+#   https://github.com/AetherAIorg/deployments
+#
+# Connect Render using deployments/render.yaml (paths prefixed with app/ submodule).
+# Vercel, GitHub Pages, and CI are configured there.
+#
+# Pushes to main in this repo trigger deployments via .github/workflows/trigger-deploy.yml

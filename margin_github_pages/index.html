@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Margin is an intelligence layer for investment metrics, with governed metric registries, lineage, and source-backed answers."
+    />
+    <title>Margin | Investment BI Operations Intelligence</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas class="matrix-canvas" aria-hidden="true"></canvas>
+    <div class="scroll-signal" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Margin home">
+        <span class="brand-mark">M</span>
+        <span>Margin</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#systems">Systems</a>
+        <a href="#integrations">Integrations</a>
+        <a href="#faq">FAQ</a>
+        <a href="#roadmap">Next</a>
+        <a class="nav-button" href="mailto:ksbatth@uwaterloo.ca">Contact me</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" data-zone="hero">
+        <div class="hero-ambient" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="hero-content">
+          <p class="eyebrow">Investment metric intelligence</p>
+          <h1>An intelligence layer for investment metrics.</h1>
+          <p class="hero-copy">
+            Margin turns the metrics scattered across your spreadsheets and models into governed metric registries,
+            so investors always work from one trusted, source-backed definition.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#systems">View work</a>
+            <a class="button secondary" href="mailto:ksbatth@uwaterloo.ca">Contact me</a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Margin operations snapshot">
+          <div class="panel-header">
+            <span>Live layer</span>
+            <strong>Metric trust</strong>
+          </div>
+          <div class="signal-row">
+            <span>NAV lineage</span>
+            <strong data-metric="lineage">97%</strong>
+          </div>
+          <div class="signal-row">
+            <span>Source freshness</span>
+            <strong data-metric="freshness">12m</strong>
+          </div>
+          <div class="signal-row">
+            <span>Brief coverage</span>
+            <strong data-metric="coverage">8 funds</strong>
+          </div>
+          <div class="panel-chart" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="event-stream" aria-label="Recent intelligence events">
+            <span>Metric definition reconciled</span>
+            <span>Exposure variance flagged</span>
+            <span>Committee pack refreshed</span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="proof-band reveal-zone" aria-label="Project highlights" data-zone="proof">
+        <div>
+          <strong>Trust</strong>
+          <span>governed metric definitions</span>
+        </div>
+        <div>
+          <strong>Lineage</strong>
+          <span>source-backed and traceable</span>
+        </div>
+        <div>
+          <strong>IC</strong>
+          <span>committee-ready briefs</span>
+        </div>
+        <div>
+          <strong>Ask</strong>
+          <span>answers in the tools you use</span>
+        </div>
+      </section>
+
+      <section id="demo" class="section intro-section reveal-zone" data-zone="overview">
+        <div>
+          <p class="eyebrow">Overview</p>
+          <h2>Metric registries, built for investors.</h2>
+        </div>
+        <p>
+          Margin gives investment teams governed metric registries with a clean way to search trusted metrics,
+          understand lineage, and produce source-backed analysis for portfolio decisions.
+        </p>
+      </section>
+
+      <section class="section rail-section reveal-zone" aria-label="Operating layer capabilities" data-zone="rail">
+        <div class="rail-item">
+          <span>01</span>
+          <strong>Ask</strong>
+          <p>Turn portfolio questions into traceable analysis paths.</p>
+        </div>
+        <div class="rail-item">
+          <span>02</span>
+          <strong>Verify</strong>
+          <p>Connect definitions, sources, freshness, and lineage.</p>
+        </div>
+        <div class="rail-item">
+          <span>03</span>
+          <strong>Decide</strong>
+          <p>Move source-backed briefs into committee workflows.</p>
+        </div>
+      </section>
+
+      <section id="integrations" class="section integrations-section reveal-zone" data-zone="integrations">
+        <div class="section-heading">
+          <p class="eyebrow">Integrations</p>
+          <h2>Connect the tools investors already use.</h2>
+        </div>
+        <div class="integration-grid" aria-label="Investment BI integrations">
+          <article>
+            <span>Slack</span>
+            <strong>Metric alerts and answers right in your channels</strong>
+          </article>
+          <article>
+            <span>Teams</span>
+            <strong>Committee threads, alerts, and source context</strong>
+          </article>
+          <article>
+            <span>Linear</span>
+            <strong>Track flagged conflicts and ask metrics in comments</strong>
+          </article>
+          <article>
+            <span>Excel</span>
+            <strong>Fund exports, ad hoc models, operating data</strong>
+          </article>
+          <article>
+            <span>Email</span>
+            <strong>Analyst updates, memos, and diligence history</strong>
+          </article>
+          <article>
+            <span>PowerPoint</span>
+            <strong>Committee packs backed by metric lineage</strong>
+          </article>
+        </div>
+      </section>
+
+      <section id="systems" class="section reveal-zone" data-zone="systems">
+        <div class="section-heading">
+          <p class="eyebrow">Systems</p>
+          <h2>What Margin does for investors</h2>
+        </div>
+        <div class="system-grid">
+          <article class="system-card featured">
+            <div class="card-topline">
+              <span class="status">Live</span>
+              <span>Discover &amp; govern</span>
+            </div>
+            <h3>Trusted metric definitions</h3>
+            <p>
+              Margin finds how every metric is actually calculated across your spreadsheets and models, flags
+              conflicting definitions, and keeps one governed, approved version of the truth.
+            </p>
+            <ul>
+              <li>Conflicting definitions surfaced automatically</li>
+              <li>Approved definitions with full lineage</li>
+              <li>Audit trail for every change</li>
+            </ul>
+          </article>
+
+          <article class="system-card">
+            <div class="card-topline">
+              <span class="status">Live</span>
+              <span>Stay in sync</span>
+            </div>
+            <h3>Always-current metrics</h3>
+            <p>
+              As your source files change, Margin keeps trusted metrics up to date so investors always work from the
+              latest numbers without manual reconciliation.
+            </p>
+            <ul>
+              <li>Automatic change detection</li>
+              <li>Source freshness at a glance</li>
+              <li>No manual re-imports</li>
+            </ul>
+          </article>
+
+          <article class="system-card">
+            <div class="card-topline">
+              <span class="status">Live</span>
+              <span>Ask anywhere</span>
+            </div>
+            <h3>Answers in your tools</h3>
+            <p>
+              Ask about any metric from Slack, Teams, or Linear and get a governed, source-backed answer in seconds.
+              Conflicts and alerts reach the team where they already work.
+            </p>
+            <ul>
+              <li>Metric answers without leaving chat</li>
+              <li>Conflict alerts where the team works</li>
+              <li>Definitions, owners, and lineage on demand</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="roadmap" class="section roadmap-section reveal-zone" data-zone="roadmap">
+        <div class="section-heading">
+          <p class="eyebrow">Next</p>
+          <h2>Investor-ready hardening</h2>
+        </div>
+        <div class="roadmap-grid">
+          <article>
+            <span>01</span>
+            <h3>Hosted permissions</h3>
+            <p>Teams, roles, audit logs, and governed metric approvals.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>More source connectors</h3>
+            <p>Broader coverage for warehouses and fund accounting exports.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Committee report exports</h3>
+            <p>PDF and PowerPoint packs backed by metric lineage.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Deeper analytics</h3>
+            <p>Scenario analysis, anomaly detection, and correlations.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="faq" class="section faq-section reveal-zone" data-zone="faq">
+        <div class="section-heading">
+          <p class="eyebrow">FAQ</p>
+          <h2>How Margin compares</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>How is Margin different from dbt?</summary>
+            <p>
+              dbt builds data models you author in a warehouse. Margin discovers how metrics are already calculated
+              across your spreadsheets and models, reconciles conflicts, and keeps one governed metric registry.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>Do I have to replace dbt or my warehouse?</summary>
+            <p>
+              No. Margin sits on top of the tools you already use and flags when their definitions disagree.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>How is this different from Claude Code integrations?</summary>
+            <p>
+              Coding assistants help engineers write code. Margin answers investors' metric questions with governed,
+              source-backed definitions in Slack, Teams, and Linear.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>Where do the answers come from?</summary>
+            <p>
+              Every answer is tied to its source and the approved definition in your metric registry, so nothing is
+              invented.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>Margin</strong>
+        <span>An intelligence layer for investment metrics.</span>
+      </div>
+      <a href="mailto:ksbatth@uwaterloo.ca">Contact me</a>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

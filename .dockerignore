@@ -1,0 +1,12 @@
+prev/
+**/.venv
+**/__pycache__
+**/.pytest_cache
+**/.git
+**/.DS_Store
+**/node_modules
+**/.next
+**/.ingest_store
+**/.ingest_state.db
+**/.hub_state.db
+**/*.pyc

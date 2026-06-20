@@ -1,0 +1,28 @@
+# Deprecated — marketing site deploys via the deployments repo.
+#
+# GitHub Pages is published from:
+#   https://github.com/AetherAIorg/deployments
+#   workflow: deploy-pages.yml (artifact: app/margin_github_pages)
+#
+# This workflow is kept for manual fallback only.
+
+name: Deploy static content to Pages (deprecated)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Use the deployments repo instead."
