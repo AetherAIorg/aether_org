@@ -1,4 +1,13 @@
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+def _normalize_database_url(url: str) -> str:
+    if url.startswith("postgresql://"):
+        return "postgresql+psycopg://" + url[len("postgresql://") :]
+    if url.startswith("postgres://"):
+        return "postgresql+psycopg://" + url[len("postgres://") :]
+    return url
 
 
 class Settings(BaseSettings):
@@ -48,6 +57,13 @@ class Settings(BaseSettings):
 
     # Shared with Vercel NextAuth for /api/v1/auth/sync
     auth_secret: str = ""
+
+    @field_validator("database_url", mode="before")
+    @classmethod
+    def normalize_database_url(cls, value: str) -> str:
+        if isinstance(value, str):
+            return _normalize_database_url(value)
+        return value
 
 
 settings = Settings()

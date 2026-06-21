@@ -83,6 +83,7 @@ services:
       NEO4J_PASSWORD: metricgraph
     ports:
       - "8000:8000"
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
     depends_on:
       postgres:
         condition: service_healthy
@@ -103,6 +104,7 @@ services:
     command: python -m app.worker
     env_file: .env
     environment:
+      RUN_MIGRATIONS: "0"
       DATABASE_URL: postgresql+psycopg://metricgraph:metricgraph@postgres:5432/metricgraph
       REDIS_URL: redis://redis:6379/0
       S3_ENDPOINT: http://minio:9000
