@@ -7,7 +7,7 @@ import { Sidebar } from "@/components/Sidebar";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  if (pathname.startsWith("/login")) {
+  if (pathname.startsWith("/login") || pathname.startsWith("/sign-in") || pathname.startsWith("/sign-up")) {
     return <>{children}</>;
   }
   return (

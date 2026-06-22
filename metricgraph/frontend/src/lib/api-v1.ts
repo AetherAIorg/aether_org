@@ -1,18 +1,15 @@
 "use client";
 
-import { useSession } from "next-auth/react";
+import { useApiKey } from "@/components/ApiKeyProvider";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
-export function useApiKey(): string | undefined {
-  const { data: session } = useSession();
-  return (session as any)?.apiKey as string | undefined;
-}
+export { useApiKey };
 
 export async function v1Request<T>(
   path: string,
   apiKey: string | undefined,
-  options?: RequestInit
+  options?: RequestInit,
 ): Promise<T> {
   if (!apiKey) throw new Error("Not authenticated");
   const res = await fetch(`${API_URL}${path}`, {
@@ -62,7 +59,7 @@ export const v1Api = {
   graphContext: (apiKey: string, metricId: string, depth = 2) =>
     v1Request<{ nodes: GraphNode[]; edges: GraphEdge[] }>(
       `/api/v1/graph/context/${metricId}?depth=${depth}`,
-      apiKey
+      apiKey,
     ),
   activityQueries: (apiKey: string, params?: { channel?: string; intent?: string }) => {
     const q = new URLSearchParams();
@@ -70,7 +67,7 @@ export const v1Api = {
     if (params?.intent) q.set("intent", params.intent);
     return v1Request<{ total: number; items: QueryEvent[] }>(
       `/api/v1/activity/queries?${q.toString()}`,
-      apiKey
+      apiKey,
     );
   },
   activityQuery: (apiKey: string, id: string) =>

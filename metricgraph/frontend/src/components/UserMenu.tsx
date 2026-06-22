@@ -1,27 +1,37 @@
 "use client";
 
-import { signOut, useSession } from "next-auth/react";
+import { useClerk, useUser } from "@clerk/nextjs";
+import { useWorkspaceSlug } from "@/components/ApiKeyProvider";
 
 export function UserMenu() {
-  const { data: session } = useSession();
-  const user = session?.user;
+  const { user } = useUser();
+  const { signOut } = useClerk();
+  const workspaceSlug = useWorkspaceSlug();
+
   if (!user) return null;
+
+  const name = user.fullName || user.primaryEmailAddress?.emailAddress || "User";
+  const image = user.imageUrl;
 
   return (
     <div className="sidebar-user">
-      {user.image ? (
+      {image ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={user.image} alt="" className="sidebar-avatar" />
+        <img src={image} alt="" className="sidebar-avatar" />
       ) : (
         <div className="sidebar-avatar sidebar-avatar-fallback">
-          {(user.name || user.email || "?")[0].toUpperCase()}
+          {name[0]?.toUpperCase() || "?"}
         </div>
       )}
       <div className="sidebar-user-meta">
-        <strong>{user.name || user.email}</strong>
-        <span>{(session as any).workspaceSlug || "workspace"}</span>
+        <strong>{name}</strong>
+        <span>{workspaceSlug || "workspace"}</span>
       </div>
-      <button type="button" className="sidebar-signout" onClick={() => signOut({ callbackUrl: "/login" })}>
+      <button
+        type="button"
+        className="sidebar-signout"
+        onClick={() => signOut({ redirectUrl: "/sign-in" })}
+      >
         Sign out
       </button>
     </div>

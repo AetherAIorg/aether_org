@@ -1,20 +1,5 @@
-import { LoginClient } from "./LoginClient";
+import { redirect } from "next/navigation";
 
-type LoginPageProps = {
-  searchParams?: { error?: string };
-};
-
-export default function LoginPage({ searchParams }: LoginPageProps) {
-  const googleEnabled = Boolean(
-    process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET,
-  );
-  const emailEnabled = Boolean(process.env.AUTH_RESEND_KEY);
-
-  return (
-    <LoginClient
-      error={searchParams?.error}
-      googleEnabled={googleEnabled}
-      emailEnabled={emailEnabled}
-    />
-  );
+export default function LoginPage() {
+  redirect("/sign-in");
 }

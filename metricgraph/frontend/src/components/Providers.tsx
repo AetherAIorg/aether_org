@@ -1,7 +1,7 @@
 "use client";
 
-import { SessionProvider } from "next-auth/react";
+import { ApiKeyProvider } from "@/components/ApiKeyProvider";
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  return <SessionProvider>{children}</SessionProvider>;
+  return <ApiKeyProvider>{children}</ApiKeyProvider>;
 }
