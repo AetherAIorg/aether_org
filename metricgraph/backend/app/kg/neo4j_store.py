@@ -163,16 +163,20 @@ class Neo4jStore:
             return self._format_graph(result["nodes"], edges)
 
     def count_workspace(self, workspace_id: str) -> dict[str, int]:
-        with self._driver.session() as session:
-            record = session.run(
-                """
-                MATCH (n:KgNode {workspace_id: $ws})
-                OPTIONAL MATCH ()-[r:KG_EDGE {workspace_id: $ws}]->()
-                RETURN count(DISTINCT n) AS nodes, count(DISTINCT r) AS edges
-                """,
-                ws=workspace_id,
-            ).single()
-            return {"nodes": record["nodes"], "edges": record["edges"]}
+        try:
+            with self._driver.session() as session:
+                record = session.run(
+                    """
+                    MATCH (n:KgNode {workspace_id: $ws})
+                    OPTIONAL MATCH ()-[r:KG_EDGE {workspace_id: $ws}]->()
+                    RETURN count(DISTINCT n) AS nodes, count(DISTINCT r) AS edges
+                    """,
+                    ws=workspace_id,
+                ).single()
+                return {"nodes": record["nodes"], "edges": record["edges"]}
+        except Exception as exc:
+            logger.warning("Neo4j unavailable for count_workspace: %s", exc)
+            return {"nodes": 0, "edges": 0}
 
     @staticmethod
     def _format_graph(nodes: list, edges: list) -> dict[str, Any]:

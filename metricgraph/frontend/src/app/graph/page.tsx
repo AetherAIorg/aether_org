@@ -14,7 +14,10 @@ export default function GraphOverviewPage() {
 
   useEffect(() => {
     if (!apiKey) return;
-    v1Api.graphStats(apiKey).then(setStats).catch((e) => setError(e.message));
+    v1Api
+      .graphStats(apiKey)
+      .then(setStats)
+      .catch((e) => setError(e.message || "Could not load graph stats"));
     api.metrics().then(setMetrics).catch(() => {});
   }, [apiKey]);
 
